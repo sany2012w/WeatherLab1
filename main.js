@@ -34,6 +34,11 @@ function GetSimpleJson(response) {
     return {
         city: "Weather in " + response.name + " is ",
         main: response.weather[0].description,
-        Temperature: response.main.temp
+        Temperature: "Temperature: " + response.main.temp,
+        Pressure: "Pressure: " + response.main.pressure,
+        Windspeed: "Wind speed: " + response.wind.speed,
+        Humidity: "Humidity: " + response.main.humidity,
+        Clouds: "Clouds: " + response.clouds.all,
+        Visibility: "Visibility: " + response.visibility
     };
 }
