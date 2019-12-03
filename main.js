@@ -15,7 +15,25 @@ function buttonClick() {
     request.send();
     request.onload = function () {
         if (request.status == 200) {
+            let MyJson = GetSimpleJson(request.response);
 
+            display(MyJson);
         }
     }
+}
+
+function display(MyJson) {
+    let source = document.getElementById("weather").innerHTML;
+    let template = Handlebars.compile(source);
+
+    let html = template(MyJson);
+    document.getElementById("weather-container").innerHTML = html;
+}
+
+function GetSimpleJson(response) {
+    return {
+        city: "Weather in " + response.name + " is ",
+        main: response.weather[0].description,
+        Temperature: response.main.temp
+    };
 }

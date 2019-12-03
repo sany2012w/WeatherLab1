@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <title>Weather</title>
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <script type="text/javascript" src="handlebars.min.js"></script>
+     <script src="main.js"></script>
 </head>
 <body>
-    <div class="input-container">
+    <div class="inputData">
         <h1 id="input-label">Название города: </h1>
         <input id="input" type="text">
         <button id="input-button" onclick="buttonClick()">Показать</button>
     </div>
-    <div id="result"></div>
+
+    <div id="weather-container"></div>
+
+    <script id="weather" type="text/x-handlebars-template">
+        <h1>{{city}}{{main}}</h1>
+        <h2>{{Temperature}}</h2>
+    </script>
+
 </body>
 </html>
