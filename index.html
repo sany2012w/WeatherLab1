@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather</title>
-    <link rel="stylesheet" type="text/css" href="out2.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
     <script type="text/javascript" src="handlebars.min.js"></script>
     <script src="main.js"></script>
 </head>
 <body>
     <div class="inputData">
         <h1 id="input-label">Название города: </h1>
-        <input id="input" type="text">
-        <button id="input-button" onclick="buttonClick()">Показать</button>
+        <form onsubmit="buttonClick(); return false;">
+            <input id="input" type="text" placeholder="City name">
+            <input type="submit" id="input-button" Value="Search">
+        </form>
     </div>
 
     <div id="weather-container"></div>
@@ -26,5 +28,8 @@
         <h2>{{Visibility}}</h2>
     </script>
 
+    <script id="error-message" type="text/x-handlebars-template">
+        <h1>{{message}}</h1>
+    </script>
 </body>
 </html>

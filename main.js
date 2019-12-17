@@ -19,11 +19,24 @@ function buttonClick() {
 
             display(MyJson);
         }
+        else {
+            let MyJson = GetErrorMessage(request.response);
+
+            displayError(MyJson);
+        }
     }
 }
 
 function display(MyJson) {
     let source = document.getElementById("weather").innerHTML;
+    let template = Handlebars.compile(source);
+
+    let html = template(MyJson);
+    document.getElementById("weather-container").innerHTML = html;
+}
+
+function displayError(MyJson) {
+    let source = document.getElementById("error-message").innerHTML;
     let template = Handlebars.compile(source);
 
     let html = template(MyJson);
@@ -41,4 +54,11 @@ function GetSimpleJson(response) {
         Clouds: "Clouds: " + response.clouds.all,
         Visibility: "Visibility: " + response.visibility
     };
+}
+
+function GetErrorMessage(response) {
+  let message = {
+    message: response.message,
+  }
+  return message;
 }
