@@ -1,21 +1,3 @@
-function buttonClick() {
-
-    request.onload = function () {
-        if (request.status == 200) {
-            let Source = document.getElementById("weather").innerHTML;
-            let MyJson = GetSimpleJson(request.response);
-
-            displayJson(Source, MyJson);
-        }
-        else {
-            let Source = document.getElementById("error-message").innerHTML;
-            let MyJson = GetErrorMessage(request.response);
-
-            displayJson(Source, MyJson);
-        }
-    }
-}
-
 function displayJson(Source, MyJson) {
     let template = Handlebars.compile(Source);
 
